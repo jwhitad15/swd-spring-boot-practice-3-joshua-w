@@ -1,11 +1,8 @@
 package com.example.springBoot2.controllers;
 
-import com.example.springBoot2.models.Album;
 import com.example.springBoot2.models.Book;
 import org.springframework.web.bind.annotation.*;
-import repositories.bookRepository;
-
-import java.util.List;
+import com.example.springBoot2.repositories.bookRepository;
 
 @RestController
 @RequestMapping("/books")

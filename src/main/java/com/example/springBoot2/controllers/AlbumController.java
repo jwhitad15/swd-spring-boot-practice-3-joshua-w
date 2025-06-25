@@ -2,9 +2,7 @@ package com.example.springBoot2.controllers;
 
 import com.example.springBoot2.models.Album;
 import org.springframework.web.bind.annotation.*;
-import repositories.AlbumRepository;
-
-import java.util.List;
+import com.example.springBoot2.repositories.AlbumRepository;
 
 @RestController
 @RequestMapping("/albums")

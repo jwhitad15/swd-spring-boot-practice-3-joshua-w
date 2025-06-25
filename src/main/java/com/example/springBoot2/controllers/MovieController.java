@@ -2,9 +2,7 @@ package com.example.springBoot2.controllers;
 
 import com.example.springBoot2.models.Movie;
 import org.springframework.web.bind.annotation.*;
-import repositories.MovieRepository;
-
-import java.util.List;
+import com.example.springBoot2.repositories.MovieRepository;
 
 @RestController
 @RequestMapping("/movies")
