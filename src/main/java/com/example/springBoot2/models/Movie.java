@@ -1,10 +1,19 @@
 package com.example.springBoot2.models;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity
 public class Movie  {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int movieId;
     private String name;
     private int year;
     private String director;
     private int runtime;
+
 
     public Movie() {
     }
@@ -14,12 +23,12 @@ public class Movie  {
         this.year = year;
         this.director = director;
         this.runtime = duration;
+        this.movieId = movieId;
     }
 
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -27,7 +36,6 @@ public class Movie  {
     public int getYear() {
         return year;
     }
-
     public void setYear(int year) {
         this.year = year;
     }
@@ -35,7 +43,6 @@ public class Movie  {
     public String getDirector() {
         return director;
     }
-
     public void setDirector(String director) {
         this.director = director;
     }
@@ -43,8 +50,10 @@ public class Movie  {
     public int getRuntime() {
         return runtime;
     }
-
     public void setRuntime(int runtime) {
         this.runtime = runtime;
     }
+
+    public int getMovieId() { return movieId; }
+    public void setMovieId(int movieId) { this.movieId = movieId; }
 }

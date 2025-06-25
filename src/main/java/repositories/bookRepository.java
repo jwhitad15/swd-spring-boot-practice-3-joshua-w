@@ -1,0 +1,7 @@
+package repositories;
+import com.example.springBoot2.models.Book;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface bookRepository extends JpaRepository<Book, Integer> {
+
+}

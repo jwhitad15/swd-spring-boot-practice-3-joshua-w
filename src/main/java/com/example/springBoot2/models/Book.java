@@ -1,10 +1,18 @@
 package com.example.springBoot2.models;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int bookId;
     private String name;
     private int year;
     private String author;
     private int pages;
+
 
     public Book() {
     }
@@ -14,12 +22,12 @@ public class Book {
         this.year = year;
         this.author = author;
         this.pages = pages;
+        this.bookId = bookId;
     }
 
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -27,24 +35,16 @@ public class Book {
     public int getYear() {
         return year;
     }
-
     public void setYear(int year) {
         this.year = year;
     }
 
-    public String getAuthor() {
-        return author;
-    }
+    public String getAuthor() {return author;}
+    public void setAuthor(String author) {this.author = author;}
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
+    public int getPages() {return pages;}
+    public void setPages(int pages) {this.pages = pages;}
 
-    public int getPages() {
-        return pages;
-    }
-
-    public void setPages(int pages) {
-        this.pages = pages;
-    }
+    public int getBookId() { return bookId; }
+    public void setBookId(int bookId) { this.bookId = bookId; }
 }

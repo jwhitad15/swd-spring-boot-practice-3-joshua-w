@@ -1,21 +1,44 @@
 package com.example.springBoot2.controllers;
 
+import com.example.springBoot2.models.Album;
 import com.example.springBoot2.models.Book;
 import org.springframework.web.bind.annotation.*;
+import repositories.bookRepository;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/books")
 public class BookController {
-    private final List<Book> books = List.of(
-        new Book("The Catcher in the Rye", "J.D. Salinger", 1951, 234),
-        new Book("To Kill a Mockingbird", "Harper Lee", 1960, 281),
-        new Book("1984", "George Orwell", 1949, 328)
-    );
+    private final bookRepository bookRepository;
 
-    @GetMapping
-    public List<Book> getBooks() {
-        return books;
+    public BookController(bookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
+
+    @GetMapping("/books")
+    public Book getAllItems(@RequestBody Book book) {
+        return (Book) bookRepository.findAll();
+    }
+
+    @GetMapping("/books/{id}")
+    public Book getItem(@PathVariable int bookId) {
+        return (Book) bookRepository.findById(bookId).orElse(null);
+    }
+
+    @PostMapping("/books")
+    public Book addItem(@RequestBody Book book) {
+        return (Book) bookRepository.save(book);
+    }
+
+    @PutMapping("/books/{id}")
+    public Book updateItem(@PathVariable int bookId, @RequestBody Book book) {
+        book.setBookId(bookId);
+        return bookRepository.save(book);
+    }
+
+    @DeleteMapping("/books/{id}")
+    public void deleteItem(@PathVariable int bookId) {
+        bookRepository.deleteById(bookId);
     }
 }
